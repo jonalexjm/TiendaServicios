@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4d0bd166-9f99-4f69-a09e-a2a3494ab830": {
+      "ProjectGuid": "4d0bd166-9f99-4f69-a09e-a2a3494ab830",
+      "DisplayName": "TiendaServicios.Api.Autor",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
