@@ -12,6 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TiendaServicios.Api.Autor.Persistencia;
+using MediatR;
+using TiendaServicios.Api.Autor.Aplicacion;
 
 namespace TiendaServicios.Api.Autor
 {
@@ -33,6 +35,8 @@ namespace TiendaServicios.Api.Autor
             {
                 options.UseNpgsql(Configuration.GetConnectionString("ConexionDatabase"));
             });
+
+            services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TiendaServicios.Api.Autor", Version = "v1" });

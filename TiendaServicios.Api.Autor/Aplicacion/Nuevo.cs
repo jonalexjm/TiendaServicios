@@ -14,6 +14,7 @@ namespace TiendaServicios.Api.Autor.Aplicacion
             public string Nombre { get; set; }
             public string Apelllido { get; set; }
             public DateTime? FechaNacimiento { get; set; }
+
         }
 
         public class Manejador : IRequestHandler<Ejecuta>
@@ -30,6 +31,7 @@ namespace TiendaServicios.Api.Autor.Aplicacion
                     Nombre = request.Nombre,
                     FechaNacimiento = request.FechaNacimiento,
                     Apellido = request.Apelllido,
+                    AutorLibreGuid = Convert.ToString(Guid.NewGuid()),
                 };
 
                 _contexto.AutorLibro.Add(autorLibro);
