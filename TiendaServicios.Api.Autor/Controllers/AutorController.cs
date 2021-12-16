@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TiendaServicios.Api.Autor.Aplicacion;
+using TiendaServicios.Api.Autor.Modelo;
 
 namespace TiendaServicios.Api.Autor.Controllers
 {
@@ -21,5 +23,19 @@ namespace TiendaServicios.Api.Autor.Controllers
         {
             return await _mediator.Send(data);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<List<AutorLibro>>> GetAutores()
+        {
+            return await _mediator.Send(new Consulta.ListaAutor());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AutorLibro>> GetAutorLibro(string id)
+        {
+            return await _mediator.Send(new ConsultaFiltro.AutorUnico { AutorGuid = id });
+        }
+
+
     }
 }
