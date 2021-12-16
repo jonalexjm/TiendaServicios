@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using TiendaServicios.Api.Autor.Persistencia;
 using MediatR;
 using TiendaServicios.Api.Autor.Aplicacion;
+using FluentValidation.AspNetCore;
 
 namespace TiendaServicios.Api.Autor
 {
@@ -30,7 +31,8 @@ namespace TiendaServicios.Api.Autor
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers()
+                    .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
             services.AddDbContext<ContextoAutor>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("ConexionDatabase"));

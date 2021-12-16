@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,15 @@ namespace TiendaServicios.Api.Autor.Aplicacion
             public string Apelllido { get; set; }
             public DateTime? FechaNacimiento { get; set; }
 
+        } 
+
+        public class EjecutaValidacion : AbstractValidator<Ejecuta>
+        {
+            public EjecutaValidacion()
+            {
+                RuleFor(x => x.Nombre).NotEmpty();
+                RuleFor(x => x.Apelllido).NotEmpty();
+            }
         }
 
         public class Manejador : IRequestHandler<Ejecuta>
