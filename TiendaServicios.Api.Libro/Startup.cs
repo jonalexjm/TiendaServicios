@@ -1,6 +1,10 @@
+using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,13 +14,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using TiendaServicios.Api.Autor.Persistencia;
-using MediatR;
-using TiendaServicios.Api.Autor.Aplicacion;
-using FluentValidation.AspNetCore;
+using TiendaServicios.Api.Libro.Aplicacion;
+using TiendaServicios.Api.Libro.Persistencia;
 
-namespace TiendaServicios.Api.Autor
+namespace TiendaServicios.Api.Libro
 {
     public class Startup
     {
@@ -31,19 +32,16 @@ namespace TiendaServicios.Api.Autor
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers()
-                    .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
-            services.AddDbContext<ContextoAutor>(options =>
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
+            services.AddDbContext<ContextoLibreria>(opt =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("ConexionDatabase"));
+                opt.UseSqlServer(Configuration.GetConnectionString("conexionDB"));
             });
-
-            services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
-            services.AddAutoMapper(typeof(Consulta.Manejador));
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TiendaServicios.Api.Autor", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TiendaServicios.Api.Libro", Version = "v1" });
             });
+            services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,8 +51,10 @@ namespace TiendaServicios.Api.Autor
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TiendaServicios.Api.Autor v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TiendaServicios.Api.Libro v1"));
             }
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
