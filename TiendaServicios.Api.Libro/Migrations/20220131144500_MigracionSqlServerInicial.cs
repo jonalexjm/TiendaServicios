@@ -13,7 +13,7 @@ namespace TiendaServicios.Api.Libro.Migrations
                 {
                     LibreriaMaterialId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaPublicacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaPublicacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AutorLibro = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>

@@ -32,6 +32,7 @@ namespace TiendaServicios.Api.Libro
         public void ConfigureServices(IServiceCollection services)
         {
 
+
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
             services.AddDbContext<ContextoLibreria>(opt =>
             {
