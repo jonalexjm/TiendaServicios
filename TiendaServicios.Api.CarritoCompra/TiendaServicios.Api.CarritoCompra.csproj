@@ -27,10 +27,16 @@
     <None Remove="Modelo\" />
     <None Remove="Persistencia\" />
     <None Remove="Aplicacion\" />
+    <None Remove="RemoteModels\" />
+    <None Remove="RemoteInterfaces\" />
+    <None Remove="RemoteService\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modelo\" />
     <Folder Include="Persistencia\" />
     <Folder Include="Aplicacion\" />
+    <Folder Include="RemoteModel\" />
+    <Folder Include="RemoteInterface\" />
+    <Folder Include="RemoteService\" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,10 @@ namespace TiendaServicios.Api.CarritoCompra
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TiendaServicios.Api.CarritoCompras", Version = "v1" });
+            });
+            services.AddHttpClient("libros", config =>
+            {
+                config.BaseAddress = new Uri(Configuration["services:Libros"]);
             });
         }
 
