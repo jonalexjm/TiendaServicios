@@ -43,6 +43,7 @@ namespace TiendaServicios.Api.Libro
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TiendaServicios.Api.Libro", Version = "v1" });
             });
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
+            services.AddAutoMapper(typeof(Consulta.Ejecuta));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

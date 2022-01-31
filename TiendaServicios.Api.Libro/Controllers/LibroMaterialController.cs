@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TiendaServicios.Api.Libro.Aplicacion;
 
@@ -19,6 +20,12 @@ namespace TiendaServicios.Api.Libro.Controllers
         public async Task<ActionResult<Unit>> Crear(Nuevo.Ejecuta data)
         {
             return await _mediator.Send(data);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<LibroMaterialDto>>> GetLibros()
+        {
+            return await _mediator.Send(new Consulta.Ejecuta());
         }
     }
 }
