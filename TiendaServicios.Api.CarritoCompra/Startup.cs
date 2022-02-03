@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TiendaServicios.Api.CarritoCompra.Aplicacion;
 using TiendaServicios.Api.CarritoCompra.Persistencia;
+using TiendaServicios.Api.CarritoCompra.RemoteInterface;
+using TiendaServicios.Api.CarritoCompra.RemoteService;
 
 
 namespace TiendaServicios.Api.CarritoCompra
@@ -26,6 +28,7 @@ namespace TiendaServicios.Api.CarritoCompra
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddScoped<ILibroService, LibroService>();
             services.AddControllers();
             services.AddDbContext<CarritoContexto>(options =>
             {

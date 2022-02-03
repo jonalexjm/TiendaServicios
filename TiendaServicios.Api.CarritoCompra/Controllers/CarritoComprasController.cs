@@ -19,18 +19,12 @@ namespace TiendaServicios.Api.CarritoCompra.Controllers
         {
             _mediator = mediator;
         }
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+       
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<CarritoDto>> GetCarrito(int id)
         {
-            return "value";
+            return await _mediator.Send(new Consulta.Ejecuta {CarritoSesionId = id});
         }
 
         // POST api/values
@@ -42,16 +36,6 @@ namespace TiendaServicios.Api.CarritoCompra.Controllers
             return result;
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }
