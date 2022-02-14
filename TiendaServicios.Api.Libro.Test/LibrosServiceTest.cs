@@ -45,10 +45,33 @@ namespace TiendaServicios.Api.Libro.Test
                 .Setup(x => x.GetAsyncEnumerator(new System.Threading.CancellationToken()))
                 .Returns(new AsyncEnumerator<LibreriaMaterial>(dataPrueba.GetEnumerator()));
 
+            dbSet.As<IQueryable<LibreriaMaterial>>().Setup(x => x.Provider).Returns(new AsyncQueryProvider<LibreriaMaterial>(dataPrueba.Provider));
+
             var context = new Mock<ContextoLibreria>();
             context.Setup(x => x.LibreriaMaterial)
                 .Returns(dbSet.Object);
             return context;
+        }
+
+        [Fact]
+        public async void GetLibroPorId()
+        {
+            var mockContexto = CrearContexto();
+            var mapConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingTest());
+            });
+
+            var mapper = mapConfig.CreateMapper();
+            var request = new ConsultaFiltro.LibroUnico();
+            request.LibroId = Guid.Empty;
+
+            var manejador = new ConsultaFiltro.Manejador(mockContexto.Object, mapper);
+            var libro = await manejador.Handle(request, new System.Threading.CancellationToken());
+
+            Assert.NotNull(libro);
+            Assert.True(libro.LibreriaMaterialId == Guid.Empty);
+
         }
 
         [Fact]
