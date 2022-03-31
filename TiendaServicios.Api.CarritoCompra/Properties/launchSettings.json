@@ -21,10 +21,16 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/CarritoCompras",
-      "applicationUrl": "https://localhost:18447;http://localhost:60363",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:18447;http://localhost:60363"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/CarritoCompras",
+      "publishAllPorts": true
     }
   }
 }

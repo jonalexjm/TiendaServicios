@@ -6,3 +6,19 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "6103:80"
+
+  tiendaservicios.api.libro:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6105:80"
+
+
+  tiendaservicios.api.carritocompra:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Services_Libros=http://tiendaservicios.api.libro
+    ports:
+      - "6106:80"
+
+

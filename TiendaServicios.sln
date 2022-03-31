@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiendaServicios.Api.Autor", "TiendaServicios.Api.Autor\TiendaServicios.Api.Autor.csproj", "{4D0BD166-9F99-4F69-A09E-A2A3494AB830}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiendaServicios.Api.Libro", "TiendaServicios.Api.Libro\TiendaServicios.Api.Libro.csproj", "{B12CF680-D93B-4B3F-828F-7BBD6F532D1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiendaServicios.Api.Libro", "TiendaServicios.Api.Libro\TiendaServicios.Api.Libro.csproj", "{B12CF680-D93B-4B3F-828F-7BBD6F532D1B}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8960D38C-CF0D-44DA-A622-67330C35E2AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiendaServicios.Api.CarritoCompra", "TiendaServicios.Api.CarritoCompra\TiendaServicios.Api.CarritoCompra.csproj", "{2AA0237C-AA97-46C5-9C0F-EF67C16A587F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiendaServicios.Api.CarritoCompra", "TiendaServicios.Api.CarritoCompra\TiendaServicios.Api.CarritoCompra.csproj", "{2AA0237C-AA97-46C5-9C0F-EF67C16A587F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiendaServicios.Api.Libro.Test", "TiendaServicios.Api.Libro.Test\TiendaServicios.Api.Libro.Test.csproj", "{344AEBAE-7C3D-4F39-8110-49B4CF31560E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiendaServicios.Api.Libro.Test", "TiendaServicios.Api.Libro.Test\TiendaServicios.Api.Libro.Test.csproj", "{344AEBAE-7C3D-4F39-8110-49B4CF31560E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +32,8 @@ Global
 		{8960D38C-CF0D-44DA-A622-67330C35E2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8960D38C-CF0D-44DA-A622-67330C35E2AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AA0237C-AA97-46C5-9C0F-EF67C16A587F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA0237C-AA97-46C5-9C0F-EF67C16A587F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA0237C-AA97-46C5-9C0F-EF67C16A587F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{344AEBAE-7C3D-4F39-8110-49B4CF31560E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{344AEBAE-7C3D-4F39-8110-49B4CF31560E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{344AEBAE-7C3D-4F39-8110-49B4CF31560E}.Release|Any CPU.ActiveCfg = Release|Any CPU

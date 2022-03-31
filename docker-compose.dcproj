@@ -9,6 +9,7 @@
     <DockerServiceName>tiendaservicios.api.autor</DockerServiceName>
     <Configurations>Debug;Release</Configurations>
     <Platforms>AnyCPU</Platforms>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
