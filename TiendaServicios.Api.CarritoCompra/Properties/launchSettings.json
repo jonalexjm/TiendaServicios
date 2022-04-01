@@ -23,8 +23,7 @@
       "launchUrl": "api/CarritoCompras",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:18447;http://localhost:60363"
+      }
     },
     "Docker": {
       "commandName": "Docker",

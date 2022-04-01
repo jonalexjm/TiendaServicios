@@ -17,7 +17,7 @@ services:
   tiendaservicios.api.carritocompra:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - Services_Libros=http://tiendaservicios.api.libro
+      - Services__Libros=http://tiendaservicios.api.libro
     ports:
       - "6106:80"
 

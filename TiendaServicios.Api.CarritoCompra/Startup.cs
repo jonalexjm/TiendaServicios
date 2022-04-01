@@ -40,9 +40,9 @@ namespace TiendaServicios.Api.CarritoCompra
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TiendaServicios.Api.CarritoCompras", Version = "v1" });
             });
-            services.AddHttpClient("libros", config =>
+            services.AddHttpClient("Libros", config =>
             {
-                config.BaseAddress = new Uri(Configuration["services:Libros"]);
+                config.BaseAddress = new Uri(Configuration.GetSection("Services:Libros").Value);
             });
         }
 
