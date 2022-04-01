@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TiendaServicios.Api.Gateway.MessageHandler;
 
 namespace TiendaServicios.Api.Gateway
 {
@@ -28,7 +29,7 @@ namespace TiendaServicios.Api.Gateway
         {
 
             //services.AddControllers();
-            services.AddOcelot();
+            services.AddOcelot().AddDelegatingHandler<LibroHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
