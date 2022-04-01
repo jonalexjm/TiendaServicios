@@ -10,7 +10,8 @@
         }
       ],
       "UpstreamPathTemplate": "/libro",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+      "key": "LibroTotal"
     },
     {
       "DownstreamPathTemplate": "/api/LibroMaterial/{id}",
@@ -22,9 +23,66 @@
         }
       ],
       "UpstreamPathTemplate": "/libro/{id}",
-      "UpstreamHttpMethod": [ "GET", "DELETE"]
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Autor",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "tiendaservicios.api.autor",
+          "port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Autor",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+      "key": "AutorTotal"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Autor/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "tiendaservicios.api.autor",
+          "port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Autor/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/CarritoCompras",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "tiendaservicios.api.carritocompra",
+          "port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/CarritoCompra",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/CarritoCompras/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "tiendaservicios.api.carritocompra",
+          "port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/CarritoCompra/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
     }
-
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "AutorTotal",
+        "LibroTotal"
+      ],
+      "UpstreamPathTemplate": "/LibroAutor"
+    }
   ]
 
 }
