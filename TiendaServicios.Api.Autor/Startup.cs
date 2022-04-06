@@ -19,6 +19,8 @@ using TiendaServicios.RabbitMQ.Bus.EventoQueue;
 using TiendaServicios.RabbitMQ.Bus.BusRabbit;
 using TiendaServicios.Api.Autor.ManejadorRabbit;
 using TiendaServicios.RabbitMQ.Bus.Implement;
+using TiendaServicios.Mensajeria.Email.SendGridLibreria.Implement;
+using TiendaServicios.Mensajeria.Email.SendGridLibreria.Interface;
 
 namespace TiendaServicios.Api.Autor
 {
@@ -39,6 +41,8 @@ namespace TiendaServicios.Api.Autor
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
                 return new RabbitEventBus(sp.GetService<IMediator>(), scopeFactory);
             });
+            services.AddSingleton<ISendGridEnviar, SendGridEnviar>();
+
             services.AddTransient<EmailEventoManejador>();
             services.AddTransient<IEventoManejador<EmailEventoQueue>, EmailEventoManejador>();
             services.AddControllers()
