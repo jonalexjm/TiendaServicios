@@ -16,6 +16,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TiendaServicios.Api.Libro.Aplicacion;
 using TiendaServicios.Api.Libro.Persistencia;
+using TiendaServicios.RabbitMQ.Bus.BusRabbit;
+using TiendaServicios.RabbitMQ.Bus.Implement;
 
 namespace TiendaServicios.Api.Libro
 {
@@ -32,7 +34,7 @@ namespace TiendaServicios.Api.Libro
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            services.AddTransient<IRabbitEventBus, RabbitEventBus>();
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
             services.AddDbContext<ContextoLibreria>(opt =>
             {

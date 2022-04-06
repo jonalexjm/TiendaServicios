@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using TiendaServicios.Api.Libro.Modelo;
 using TiendaServicios.Api.Libro.Persistencia;
+using TiendaServicios.RabbitMQ.Bus.BusRabbit;
+using TiendaServicios.RabbitMQ.Bus.EventoQueue;
 
 namespace TiendaServicios.Api.Libro.Aplicacion
 {
@@ -30,27 +32,40 @@ namespace TiendaServicios.Api.Libro.Aplicacion
         public class Manejador : IRequestHandler<Ejecuta>
         {
             private readonly ContextoLibreria _contexto;
-            public Manejador(ContextoLibreria contexto)
+            private readonly IRabbitEventBus _eventBus;
+            public Manejador(ContextoLibreria contexto,
+                             IRabbitEventBus eventBus)
             {
                 _contexto = contexto;
+                _eventBus = eventBus;
             }
             public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
-                var libro = new LibreriaMaterial
+                try
                 {
-                    Titulo = request.Titulo,
-                    FechaPublicacion = request.FechaPublicacion,
-                    AutorLibro = request.AutorLibro
-                };
+                    var libro = new LibreriaMaterial
+                    {
+                        Titulo = request.Titulo,
+                        FechaPublicacion = request.FechaPublicacion,
+                        AutorLibro = request.AutorLibro
+                    };
 
-                _contexto.LibreriaMaterial.Add(libro);
-                var value = await _contexto.SaveChangesAsync();
-                //validamos que si guardo
-                if (value > 0)
-                {
-                    return Unit.Value;
+                    _contexto.LibreriaMaterial.Add(libro);
+                    var value = await _contexto.SaveChangesAsync();
+                    _eventBus.Publish(new EmailEventoQueue("jhonalexjm@gmail.com", request.Titulo, "Este es un ejemplo"));
+                    //validamos que si guardo
+                    if (value > 0)
+                    {
+                        return Unit.Value;
+                    }
+                    throw new Exception("No se pudo completar la operacion");
                 }
-                throw new Exception("No se pudo completar la operacion");
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    throw;
+                }
+                
 
             }
         }
