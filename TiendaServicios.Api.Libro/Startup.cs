@@ -34,7 +34,12 @@ namespace TiendaServicios.Api.Libro
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddTransient<IRabbitEventBus, RabbitEventBus>();
+            //services.AddTransient<IRabbitEventBus, RabbitEventBus>();
+            services.AddSingleton<IRabbitEventBus, RabbitEventBus>(sp =>
+            {
+                var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
+                return new RabbitEventBus(sp.GetService<IMediator>(), scopeFactory);
+            });
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>());
             services.AddDbContext<ContextoLibreria>(opt =>
             {
